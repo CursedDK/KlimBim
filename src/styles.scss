@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, .brand-title {
+  font-family: 'Train One', cursive;
+}
+
+/* Nur auf Links im Header anwenden, die KEINE Buttons sind */
+nav a:not(.btn) {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  background: white;
+  transition: width 0.3s;
+  left: 0;
+  bottom: -4px;
+}
+
+nav a:not(.btn):hover::after {
+  width: 100%;
+}
+
+.hero-section .container {
+  	max-width: 600px;
+}
+
+.hero-section {
+	border-bottom: 2px solid black;
+	border-top: 2px solid white;
+	min-height: 100vh;
+	background: linear-gradient(-45deg, #007bff, #6610f2, #6f42c1, #17a2b8);
+	background-size: 400% 400%;
+	animation: gradientBG 15s ease infinite;
+	padding: 0;
+}
+
+.leistungen-section {
+  	border-bottom: 2px solid black;
+}
+
+.aboutUs-section {
+	border-bottom: 2px solid black;
+}
+
+.kontakt-section {
+	border-bottom: 2px solid black;
+}
+
+.bg-primary {
+  background-color: #6023F3 !important;
+}
+
+.text-primary {
+  color: #6023F3 !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.under-construction {
+  height: 80vh;
+  background: linear-gradient(135deg, #343a40, #6c757d);
+  padding: 2rem;
+}
