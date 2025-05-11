@@ -5,6 +5,8 @@ import { HeaderComponent } from '../header/header.component';
 import { DatenschutzComponent } from '../datenschutz/datenschutz.component';
 import { ImpressumComponent } from '../impressum/impressum.component';
 import { UnderConstructionComponent } from '../under-construction/under-construction.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ContactService } from '../services/ContactService';
 export const sharedImports = [
 	// Components 
 	HeaderComponent,
@@ -13,7 +15,13 @@ export const sharedImports = [
 	ImpressumComponent,
 
 	// Modules 
-	CommonModule
+	CommonModule,
+	ReactiveFormsModule
+]
+
+export const sharedServices = [
+	// Services
+	ContactService
 ]
 
 export const sharedComponents = [

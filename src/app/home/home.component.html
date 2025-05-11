@@ -76,8 +76,8 @@
 			<div class="col-md-6">
 				<h3 class="mb-3">Unsere Adresse</h3>
 				<p><i class="fa-solid fa-location-dot me-2"></i> Sandstraße 10, 90443 Nürnberg</p>
-				<p><i class="fa-solid fa-phone me-2"></i> 030 123456789</p>
-				<p><i class="fa-solid fa-envelope me-2"></i> kontakt&#64;klimbim-gmbh.de</p>
+				<p><i class="fa-solid fa-phone me-2"></i> +49 151 10530610</p>
+				<p><i class="fa-solid fa-envelope me-2"></i> Klimbim-zeitarbeit&#64;hotmail.com</p>
 				<!-- <div class="mt-4">
 					<iframe class="w-100 rounded shadow" height="200" style="border:0"
 						loading="lazy"
@@ -88,21 +88,21 @@
 				</div> -->
 			</div>
 			<div class="col-md-6 mb-4">
-				<form>
+				<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 					<div class="mb-3">
 						<label class="form-label">Name</label>
-						<input type="text" class="form-control" placeholder="Ihr Name">
+						<input type="text" class="form-control" formControlName="name" placeholder="Ihr Name">
 					</div>
 					<div class="mb-3">
 						<label class="form-label">E-Mail</label>
-						<input type="email" class="form-control" placeholder="Ihre E-Mail">
+						<input type="email" class="form-control" formControlName="email" placeholder="Ihre E-Mail">
 					</div>
 					<div class="mb-3">
 						<label class="form-label">Nachricht</label>
-						<textarea class="form-control" rows="4" placeholder="Ihre Nachricht"></textarea>
+						<textarea class="form-control" rows="4" formControlName="message" placeholder="Ihre Nachricht"></textarea>
 					</div>
 					<div class="w-100 text-center mt-4">
-						<button type="submit" class="btn btn-light  py-2 px-3">Absenden</button>
+						<button type="submit" class="btn btn-light py-2 px-3" [disabled]="contactForm.invalid">Absenden</button>
 					</div>
 				</form>
 			</div>
