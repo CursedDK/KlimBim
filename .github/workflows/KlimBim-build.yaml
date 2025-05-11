@@ -37,28 +37,10 @@ jobs:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
         run: npm ci
+      - name: Build
+        run: ng build -prod
 
         jobs:
-# Please do not rename this job
-  build-project:
-    name: build KlimBim
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: 'recursive'
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: v22.x
-
-      - name: Build Node assets
-        env:
-          CI: true
-          SITE_URL: ${{ inputs.site-url }}
-        run: ng build -prod
 
 # Please do not touch the following action
       - name: Store deployment content
