@@ -16,6 +16,6 @@ export class ContactService {
             })
         } 
 
-		return this.http.post('http://localhost:3000/send-email', data, header);
+		return this.http.post('http://klimbimgmbh.de/send-email', data, header);
 	}
 }
