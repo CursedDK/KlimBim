@@ -1,5 +1,4 @@
-# To better understand this file read this:
-# https://docs.ionos.space/docs/github-actions-customization/
+# .github/workflows/KlimBim-build.yaml
 
 name: "Deploy Now: Execute Build"
 
@@ -17,32 +16,33 @@ env:
   DEPLOYMENT_FOLDER: ./dist/klim-bim-gmb-h
 
 jobs:
-# Please do not rename this job
   build-project:
-    name: build KlimBim
+    name: Build KlimBim
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: v22.x
+          node-version: 22
 
-      - name: Build Node assets
+      - name: Preflight Angular build
+        run: npx ng build
+        continue-on-error: true  # Allows early feedback without failing the workflow
+
+      - name: Install Node dependencies
         env:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
         run: npm ci
-      - name: Build
-        run: ng build -prod
 
-        jobs:
+      - name: Final Angular production build
+        run: npx ng build --configuration production
 
-# Please do not touch the following action
       - name: Store deployment content
         uses: ionos-deploy-now/artifact-action@v1
         with:
