@@ -26,17 +26,16 @@ app.post('/send-email', (req, res) => {
 		secure: true,
 		auth: {
 			user: 'kontakt@klimbimgmbh.de',
-			pass: 'klimbimgmbh2025!!'
+			pass: 'Klimbimgmbh2025!?'
 		},
 		authMethod: 'PLAIN',
 	});
     
-
     let email = new Email(req.body, "Kontakt");
 
     const mailOptions = {
         from: sender,
-        to: 'dkougioumtsidis@icloud.com',
+        to: 'Klimbim-zeitarbeit@hotmail.com',
         subject: email.subject,
         html: email.text
     };
