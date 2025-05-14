@@ -58,12 +58,25 @@ nav a:not(.btn):hover::after {
 	border-bottom: 2px solid black;
 }
 
+.usearea-section {
+	border-bottom: 2px solid black;
+}
+
+.kontakt-background {
+	background-image: url('/working.jpg'); /* Pfad zu deinem Bild */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.4; /* Transparenz des Overlay */
+}
+
+
 .bg-primary {
-  background-color: #6023F3 !important;
+  	background-color: #6023F3 !important;
 }
 
 .text-primary {
-  color: #6023F3 !important;
+  	color: #6023F3 !important;
 }
 
 .pointer {
@@ -81,4 +94,14 @@ nav a:not(.btn):hover::after {
   height: 80vh;
   background: linear-gradient(135deg, #343a40, #6c757d);
   padding: 2rem;
+}
+
+
+.card-hover {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+	transform: translateY(-8px) scale(1.02);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
