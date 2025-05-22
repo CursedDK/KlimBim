@@ -6,16 +6,12 @@ export class ContactService {
 	constructor(private http: HttpClient) {}
 
 	sendContactForm(data: { name: string; email: string; message: string }) {
-		
-        var header = { 
-            headers: new HttpHeaders({
+
+		return this.http.post('https://klimbimgmbh.de/send-email', data, new HttpHeaders({
                 'Content-Type' : 'application/json',    
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-            })
-        } 
-
-		return this.http.post('https://klimbimgmbh.de/send-email', data, header);
+            }));
 	}
 }
