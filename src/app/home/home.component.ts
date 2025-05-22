@@ -26,8 +26,8 @@ export class HomeComponent {
 		if (this.contactForm.valid) {
 			console.log((this.contactForm.value))
 			this.contactService.sendContactForm(this.contactForm.value).subscribe({
-				next: () => console.log('Nachricht gesendet!'),
-				error: () => console.log('Fehler beim Senden.'),
+          next: res => console.log('Erfolg:', res),
+          error: err => console.error('Fehler beim Senden:', err)
 			});
 		}
 	}
