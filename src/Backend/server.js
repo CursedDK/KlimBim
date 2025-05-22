@@ -6,20 +6,18 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 
-const allowedOrigins = ['http://localhost:4200', 'https://klimbimgmbh.de'];
+const allowedOrigins = [
+  'http://localhost:4200',
+  'https://klimbimgmbh.de',
+  'https://www.klimbimgmbh.de'
+];
+
 app.use(cors({
-  	origin: function(origin, callback){
-    		if (!origin) return callback(null, true);
-    		if (allowedOrigins.includes(origin)) {
-    			  return callback(null, true);
-    		} else {
-      			console.log(`Blocked CORS request from origin: ${origin}`);
-      			return callback(new Error('Not allowed by CORS'));
-    		}
-  	},
-  	methods: ['GET', 'POST', 'OPTIONS'],
-  	allowedHeaders: ['Content-Type']
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
 }));
+
 
 class Email {
   	constructor(body, subject) {
