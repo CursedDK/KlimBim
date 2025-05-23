@@ -39,7 +39,6 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.post('/send-email', (req, res) => {
-	res.json({ success: true });
   	console.log('Attempting to send email with body:', req.body);
   	let sender = "kontakt@klimbimgmbh.de";
   
