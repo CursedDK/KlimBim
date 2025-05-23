@@ -17,16 +17,29 @@ app.use(cors());
 
 class Email {
   	constructor(body, subject) {
-    		this.text = 'Der ' + body.name + ' hat eine Nachricht gesendet. \n\n' +
-      			'Email: ' + body.email + '\n' +
-      			'Nachricht: ' + body.message + '\n\n' ;
-    		this.subject = subject;
+		this.text = 'Der ' + body.name + ' hat eine Nachricht gesendet. \n\n' +
+			'Email: ' + body.email + '\n' +
+			'Nachricht: ' + body.message + '\n\n' ;
+		this.subject = subject;
   	}
 }
 
+app.use((req, res, next) => {
+  	const origin = req.headers.origin;
+  	if (allowedOrigins.includes(origin)) {
+			res.setHeader('Access-Control-Allow-Origin', origin);
+  	}
+  	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  	res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  	next();
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.json());
 
 app.post('/send-email', (req, res) => {
+	res.json({ success: true });
   	console.log('Attempting to send email with body:', req.body);
   	let sender = "kontakt@klimbimgmbh.de";
   
