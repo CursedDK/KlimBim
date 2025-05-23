@@ -44,7 +44,7 @@ app.post('/send-email', (req, res) => {
   
   	let transporter = nodemailer.createTransport({
     		host: "smtp.ionos.de",
-    		port: 465,
+    		port: 587,
     		secure: true,
     		auth: {
       			user: 'kontakt@klimbimgmbh.de',
