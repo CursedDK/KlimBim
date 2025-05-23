@@ -12,11 +12,7 @@ const allowedOrigins = [
   'https://www.klimbimgmbh.de'
 ];
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
-}));
+app.use(cors());
 
 
 class Email {
@@ -28,11 +24,7 @@ class Email {
   	}
 }
 
-// Log every incoming request
-app.use((req, res, next) => {
-  	console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`, req.body);
-  	next();
-});
+app.use(express.json());
 
 app.post('/send-email', (req, res) => {
   	console.log('Attempting to send email with body:', req.body);
@@ -75,6 +67,7 @@ app.post('/send-email', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'localhost';
 app.listen(port, () => {
-	  console.log(`Server is running on port ${port}`);
+	  console.log(`Server is running on port ${host} ${port}`);
 });
