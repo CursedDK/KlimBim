@@ -62,24 +62,20 @@ app.post('/send-email', (req, res) => {
     		html: email.text
   	};
 
-  	try {
-    		transporter.sendMail(mailOptions, (error, info) => {
-      			if (error) {
-      				console.error('Email sending failed:', error);
-      				res.status(500).json({ error: "Email not sent :" + error });
-      			} else {
-      				console.log('Email sent successfully:', info.response);
-      				res.json({ message: "Email sent" });
-      			}
-    		});
-  	} catch (err) {
-    		console.error('Exception occurred during email sending:', err);
-    		res.status(500).json({ error: "Exception occurred during email sending: " + err });
-  	}
+	transporter.sendMail(mailOptions, (error, info) => {
+		if (error) {
+			console.error('Email sending failed:', error);
+			return res.status(500).json({ error: 'Email not sent', details: error.toString() });
+		} 
+
+		console.log('Email sent:', info.response);
+		return res.status(200).json({ message: 'Email sent' });
+	});
+  	
 });
 
 const port = process.env.PORT || 3000;
-const host = process.env.HOST || 'localhost';
+const host = process.env.HOST;
 app.listen(port, () => {
 	  console.log(`Server is running on port ${host} ${port}`);
 });
