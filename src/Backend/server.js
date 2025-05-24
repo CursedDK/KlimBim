@@ -44,7 +44,7 @@ app.post('/send-email', (req, res) => {
   
   	let transporter = nodemailer.createTransport({
     		host: "smtp.ionos.de",
-    		port: 587,
+    		port: 465,
     		secure: true,
     		auth: {
       			user: 'kontakt@klimbimgmbh.de',
@@ -72,6 +72,11 @@ app.post('/send-email', (req, res) => {
 		return res.status(200).json({ message: 'Email sent' });
 	});
   	
+});
+
+app.use(express.static(path.join(__dirname, 'dist/klim-bim-gmb-h')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/klim-bim-gmb-h/index.html'));
 });
 
 const port = process.env.PORT || 3000;
