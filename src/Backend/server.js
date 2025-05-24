@@ -57,7 +57,7 @@ app.post('/send-email', (req, res) => {
 
   	const mailOptions = {
     		from: sender,
-    		to: 'Klimbim-zeitarbeit@hotmail.com',
+    		to: 'curseddk14@gmail.com',
     		subject: email.subject,
     		html: email.text
   	};
