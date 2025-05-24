@@ -75,9 +75,9 @@ app.post('/send-email', (req, res) => {
   	
 });
 
-app.use(express.static(path.join(__dirname, 'dist/klim-bim-gmb-h')));
+app.use(express.static(path.join('/var/www/KlimBim/KlimBim/dist/klim-bim-gmb-h')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/klim-bim-gmb-h/index.html'));
+  res.sendFile(path.join('/var/www/KlimBim/KlimBim/dist/klim-bim-gmb-h/index.html'));
 });
 
 const port = process.env.PORT || 3000;
