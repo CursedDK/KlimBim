@@ -75,10 +75,10 @@ app.post('/send-email', (req, res) => {
   	
 });
 
-app.use(express.static('/var/www/KlimBim/KlimBim/dist/klim-bim-gmb-h/browser/'));
-app.get('*', (req, res) => {
-  res.sendFile('/var/www/KlimBim/KlimBim/dist/klim-bim-gmb-h/browser/index.html');
-});
+// app.use(express.static('/var/www/KlimBim/KlimBim/dist/klim-bim-gmb-h/browser/'));
+// app.get('*', (req, res) => {
+//   res.sendFile('/var/www/KlimBim/KlimBim/dist/klim-bim-gmb-h/browser/index.html');
+// });
 
 const port = process.env.PORT || 3000;
 const host = process.env.HOST;
